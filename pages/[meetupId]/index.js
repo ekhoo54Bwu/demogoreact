@@ -29,7 +29,9 @@ export async function getStaticPaths() {
   client.close();
 
   return {
-    fallback: false, //path not defined will goes to 404, if set to true server will try generate
+    //in false mode ,path not defined will goes to 404; if set to true or blocking, server will try generate
+    //in blocking user will not see anything until it's all ready for render
+    fallback: "blocking",
     paths: meetups.map((meetup) => ({
       params: { meetupId: meetup._id.toString() },
     })),
