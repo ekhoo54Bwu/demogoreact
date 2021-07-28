@@ -7,7 +7,7 @@ async function handler(req, res) {
         
         //const { title, image, address, description } = data;
 
-        const client = await MongoClient.connect("mongodb+srv://ekdemoM4ster:wGKChip6aYZaDaoj@cluster0.bj3w0.mongodb.net/ekdemo?authSource=admin&replicaSet=atlas-lry272-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true");
+        const client = await MongoClient.connect(process.env.DB_HOST);
         const db = client.db();
 
         const meetupCollection = db.collection('meetups');
