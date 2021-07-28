@@ -55,9 +55,7 @@ export async function getStaticProps() {
   //instead of fetching from internal API we can also just call it directly from getStaticProps or getServerSideProps
   //these codes are run in server side, so it is safe
 
-  const client = await MongoClient.connect(
-    "mongodb+srv://ekdemoM4ster:wGKChip6aYZaDaoj@cluster0.bj3w0.mongodb.net/ekdemo?authSource=admin&replicaSet=atlas-lry272-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true"
-  );
+  const client = await MongoClient.connect(process.env.DB_HOST);
   const db = client.db();
   const meetupCollection = db.collection("meetups");
   const meetups = await meetupCollection.find().toArray();
